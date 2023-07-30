@@ -49,7 +49,7 @@
                                         <a class=" {{ Request::is('dashboard') ? 'dash-active' : '' }}" href="{{url('dashboard')}}dashboard">Manage My Account</a></li>
                                     <li>
 
-                                        <a class="{{ Request::is('profile') ? 'dash-active' : '' }}" href="{{url('profile')}}profile">My Profile</a></li>
+                                        <a class="{{ Request::is('profile') ? 'dash-active' : '' }}" href="{{url('profile')}}">My Profile</a></li>
 
                                     <li>
 

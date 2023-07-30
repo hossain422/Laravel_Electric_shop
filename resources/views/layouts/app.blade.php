@@ -24,7 +24,6 @@
     <!--====== App ======-->
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script> -->
     <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
 
 
@@ -71,7 +70,7 @@
                             <button style="margin-top: 10px;" class="btn  main-search-button" type="submit">Search</button>
                         </form>
                         <!--====== End - Search Form ======-->
-
+                        <!-- <div id="google_translate_element"></div> -->
 
                         <!--====== Dropdown Main plugin ======-->
                         <div class="menu-init" id="">
@@ -85,6 +84,7 @@
 
                                 <!--====== List ======-->
                                 <ul class="ah-list ah-list--design1 ah-list--link-color-secondary">
+                                    <li id="google_translate_element"></li>
                                     <li class="has-dropdown" data-tooltip="tooltip" data-placement="left" title="Account">
 
                                         <a><i class="far fa-user-circle"></i></a>
@@ -323,7 +323,7 @@
 
 
 
-
+                                    
                                     <li class="has-dropdown" data-tooltip="tooltip" data-placement="left" title="Settings">
 
                                         <a><i class="fas fa-user-cog"></i></a>
@@ -1167,7 +1167,7 @@
                                             @foreach($category as $category)
                                             <li>
 
-                                                <a href="{{url('category', $category->sub_category_id)}}">{{$category->sub_category_name}}</a>
+                                                <a href="{{url('category',$category->id)}}">{{$category->sub_category_name}}</a>
                                             </li>
                                             @endforeach
                                             
@@ -1212,8 +1212,14 @@
 
                                         <a href="index.html"><i class="fas fa-home u-c-brand"></i></a></li>
                                     <li>
-
-                                        <a href="wishlist.html"><i class="far fa-heart"></i></a></li>
+                                        @auth
+                                        @php 
+                                        $count_wish = App\Models\Wishlist::where('user_id', Auth::user()->id)->count();
+                                        @endphp
+                                        <a class="w_count" href="{{url('wishlist')}}"><i class="far fa-heart"></i><span class="total-item-round">{{$count_wish}}</span></a></li>
+                                        @else
+                                        <a href="{{url('wishlist')}}"><i class="far fa-heart"></i><span class="total-item-round">0</span></a></li>
+                                        @endauth
                                     <li class="has-dropdown">
                                         @auth
                                     @php 
@@ -1222,7 +1228,8 @@
                                     @endauth
                                         <a class="mini-cart-shop-link"><i class="fas fa-shopping-bag"></i>
                                             @auth
-                                            <span class="total-item-round">{{$quick_cart->count()}}</span></a>
+                                            <span class="total-item-round">{{$quick_cart->count()}}</span>
+                                        </a>
                                             @else
                                             <span class="total-item-round">0</span></a>
                                             @endauth
@@ -1831,12 +1838,65 @@
                 }
             });
         });
+        // Add Wishlist
+        $(document).on('click', '.add_wishlist', function(e){
+            e.preventDefault();
+            var id = $(this).data('id');
+            $.ajax({
+                method:'GET',
+                url:"{{url('add_wishlist')}}",
+                data:{id:id},
+                cache:false,
+                contentType:false,
+                dataType:false,
+                success:function(res){
+                    if(res.status=='success'){
+                        $('.w_count').load(location.href+' .w_count');
+                        Command: toastr["success"]("Product Added to Wishlist!", "Added Wishlist");
+                    }
+                }
+            });
+        });
+        // Delete Wishlist
+        $(document).on('click', '.delete_wishlist', function(e){
+            e.preventDefault();
+            var id = $(this).data('id');
+            
+            if(confirm('Are you sure to Remove from Wishlist')){
+                $.ajax({
+                    method:'get', 
+                    url:"{{url('delete_wishlist')}}",
+                    data:{id:id},
+                    success:function(res){
+                        if(res.status=='success'){
+                            $('.wishlist').load(location.href+' .wishlist');
+                            $('.w_count').load(location.href+' .w_count');
+                            Command: toastr["warning"]("Removed Product from Wishlist!", "Removed Product");
+                        }
+                    }
+                });
+            }
+        });
 
 
 
 
     });
     </script>
+
+    <!-- Add this code just before the closing </body> tag -->
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en', // Change this to your website's original language code
+    //   includedLanguages: 'ar,de,es,fr,ja,zh-CN', // Change this to the languages you want to offer for translation
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE, // You can change the layout if needed
+    }, 'google_translate_element');
+  }
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 
     
 

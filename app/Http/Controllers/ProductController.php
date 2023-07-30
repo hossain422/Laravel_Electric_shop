@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public function index(){
-        $recent_product = Product::where('status', 1)->orderBy('id', 'desc')->limit(20)->get();
+        $recent_product = Product::where('status', 1)->orderBy('id', 'desc')->limit(16)->get();
         $home_category = Product::where('status', 1)->inRandomOrder()->get();
         $categories = SubCategory::where('status', 1)->orderBy('id', 'asc')->get();
         $category = SubCategory::where('status', 1)->orderBy('id', 'desc')->get();

@@ -45,7 +45,7 @@ Route::get('login/{provider}/callback', [SocialiteController::class, 'callback']
 // Route::view('shop', 'shop');
 Route::view('product_details', 'product_details');
 Route::view('contact', 'contact');
-Route::view('wishlist', 'wishlist');
+// Route::view('wishlist', 'wishlist');
 Route::view('profile', 'profile');
 // Route::view('order', 'order');
 // Route::view('order_details', 'order_details');
@@ -63,10 +63,16 @@ Route::get('home_category', [ProductController::class, 'home_category']);
 
 //__Cart__//
 Route::middleware('auth')->group(function () {
+    // Cart
     Route::get('/cart', [CartController::class, 'index']);
     Route::post('/add_cart', [CartController::class, 'add_cart'])->middleware('auth');
     Route::get('/delete_cart', [CartController::class, 'delete_cart']);
     Route::get('/update_cart', [CartController::class, 'update_cart']);
+    // Wishlist
+    Route::get('/wishlist', [CartController::class, 'wishlist']);
+    Route::get('/add_wishlist', [CartController::class, 'add_wishlist']);
+    Route::get('/delete_wishlist', [CartController::class, 'delete_wishlist']);
+    
     // Payment
     Route::get('/payment',[PaymentController::class, 'index']);
     Route::post('/success',[PaymentController::class,'success'])->name('success');

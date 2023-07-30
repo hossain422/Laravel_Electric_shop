@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Wishlist;
+use Illuminate\Console\View\Components\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -50,6 +52,32 @@ class CartController extends Controller
         $cart = Cart::find($request->id);
         $cart->qty = $request->qty;
         $cart->save();
+        return response()->json([
+            'status' => 'success'
+        ]);
+    }
+
+
+
+
+    // Add Wishlist
+    public function add_wishlist(Request $request){
+        $wishlist = new Wishlist();
+        $wishlist->user_id = Auth::user()->id;
+        $wishlist->product_id = $request->id;
+        $wishlist->save();
+        // return back()->with('success', 'Added to wishlist');
+        return response()->json([
+            'status' => 'success'
+        ]);
+    }
+    public function wishlist(){
+        $wishlist = Wishlist::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->get();
+        return view('wishlist', compact('wishlist'));
+    }
+    public function delete_wishlist(Request $request){
+        $wishlist = Wishlist::find($request->id);
+        $wishlist->delete();
         return response()->json([
             'status' => 'success'
         ]);

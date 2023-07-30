@@ -6,14 +6,16 @@
     <title>Order Invoice</title>
 </head>
 <body>  
-      
+      <h1 style="margin-bottom: 0;">Electric Store</h1>
+      <span>Email:info@electric-store.com</span> <br>
+      <span>Phone:01790265643</span>
+
 <h2 style="background: green; color: #fff; text-align:center; padding:5px;" >Order Invoice</h2>
     
-    <h1>Electric Store</h1>
     
-    <hr>
+    
     <h4>Order :</h4>
-    <table class="table border">
+    <table class="table">
        <thead>
        <tr>
             <th>Invoice</th>

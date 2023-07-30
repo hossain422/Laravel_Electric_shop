@@ -19,12 +19,7 @@
                                                 data-image="{{$product->image}}"
                                             data-bs-toggle="modal" id="quick_view" data-bs-target="#quick_view_modal" data-tooltip="tooltip" data-placement="top" title="Quick Look"></a></div>
                                         <div class="product-m__add-cart">
-                                            <!-- <form action="{{url('add_cart')}}" method="post">
-                                                @csrf
-                                                <input type="hidden" name="qty" id="qty" value="1">
-                                                <input type="hidden" name="product_id" id="product_id" value="{{$product->id}}">
-                                                <button class="btn--e-brand btn btn-danger" type="submit" id="add_cart">Add to Cart</button>
-                                            </form> -->
+                                            
                                             
                                         </div>
                                         
@@ -45,8 +40,14 @@
 
                                                 <span>{{$product->short_desc}}</span></div>
                                             <div class="product-m__wishlist">
-
-                                                <a class="far fa-heart" href="#" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"></a></div>
+                                                @auth 
+                                            <a href="{{url('add_wishlist', $product->id)}}" class="add_wishlist far fa-heart"
+                                                data-id="{{$product->id}}"
+                                                data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"></a>
+                                                @else
+                                                <a class="far fa-heart" href="{{url('login')}}" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"></a>
+                                                @endauth
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

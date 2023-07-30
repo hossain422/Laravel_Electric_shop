@@ -46,17 +46,18 @@
                                 <ul class="dash__f-list">
                                     <li>
 
-                                        <a class=" {{ Request::is('dashboard') ? 'dash-active' : '' }}" href="dashboard">Manage My Account</a></li>
+                                    <a class=" {{ Request::is('dashboard') ? 'dash-active' : '' }}" href="{{url('dashboard')}}dashboard">Manage My Account</a></li>
                                     <li>
 
-                                        <a class="{{ Request::is('profile') ? 'dash-active' : '' }}" href="profile">My Profile</a></li>
+                                    <a class="{{ Request::is('profile') ? 'dash-active' : '' }}" href="{{url('profile')}}">My Profile</a></li>
 
                                     <li>
 
-                                        <a class="{{ Request::is('order') ? 'dash-active' : '' }}" href="order">My Orders</a></li>
+                                    <a class="{{ Request::is('order') ? 'dash-active' : '' }}" href="{{url('order')}}">My Orders</a></li>
                                     <li>
 
-                                        <a class="{{ Request::is('') ? 'dash-active' : '' }}" href="{{url('logout')}}">Logout</a></li>
+                                    <a class="{{ Request::is('') ? 'dash-active' : '' }}" href="{{url('logout')}}">Logout</a></li>
+
 
 
                                 </ul>

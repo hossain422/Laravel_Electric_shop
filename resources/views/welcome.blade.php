@@ -138,7 +138,15 @@
                                                 <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i class="fas fa-plus-circle"></i></a></li>
                                             <li>
 
-                                                <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a></li>
+                                                @auth
+                                                <a href="{{url('add_wishlist', $category_product->id)}}" class="add_wishlist"
+                                                    data-id="{{$category_product->id}}"
+                                                    data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a>
+                                                @else
+                                                <a href="{{url('login')}}" data-tooltip="tooltip"
+                                                        data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a>
+                                                @endauth
+                                            </li>
                                             <li>
 
                                                 <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Email me When the price drops"><i class="fas fa-envelope"></i></a></li>
@@ -226,13 +234,19 @@
                                                         data-qty="{{$product->qty}}"
                                                         data-short_desc="{{$product->short_desc}}"
                                                         data-image="{{$product->image}}"
-                                                    id="quick_view" ><i class="fa-solid fa-eye"></i></a></li>
+                                                    id="quick_view" ><i class="fa-solid fa-eye"></i></a>
+                                                </li>
+                                                
                                                 <li>
-
-                                                    <!-- <a data-modal="modal" data-modal-id="#add-to-cart"><i class="fas fa-plus-circle"></i></a></li> -->
-                                                <li>
-
-                                                    <a href="signin.html"><i class="fas fa-heart"></i></a></li>
+                                                @auth
+                                                <a href="{{url('add_wishlist', $product->id)}}" class="add_wishlist"
+                                                    data-id="{{$product->id}}"
+                                                 data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a>
+                                                 @else
+                                                <a href="{{url('login')}}" data-tooltip="tooltip"
+                                                  data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a>
+                                                 @endauth
+                                                </li>
                                                 <li>
 
                                                     <a href="signin.html"><i class="fas fa-envelope"></i></a></li>
@@ -304,15 +318,7 @@
                                     type="button" data-filter=".fil1{{$category->id}}">{{$category->sub_category_name}}</button>
                                     </div>
                                     @endforeach
-                                     <!-- <div class="filter__category-wrapper">
-
-                                        <button class="btn filter__btn filter__btn--style-2" type="button" data-filter=".bottom">BOTTOM</button></div>
-                                    <div class="filter__category-wrapper">
-
-                                        <button class="btn filter__btn filter__btn--style-2" type="button" data-filter=".footwear">FOOTWEAR</button></div>
-                                    <div class="filter__category-wrapper">
-
-                                        <button class="btn filter__btn filter__btn--style-2" type="button" data-filter=".accessories">ACCESSORIES</button></div>  -->
+                                     
                                 </div>
                                 <div class="filter__grid-wrapper u-s-m-t-30 home_category_section" >
                                 <div class="row ">
@@ -330,17 +336,25 @@
                                                                 <li>
 
                                                                 <a data-bs-toggle="modal" data-bs-target="#quick_view_modal"
-                                                                data-id="{{$product->id}}"
-                                                                data-name="{{$product->name}}"
-                                                                data-price="{{$product->price}}"
-                                                                data-qty="{{$product->qty}}"
-                                                                data-short_desc="{{$product->short_desc}}"
-                                                                data-image="{{$product->image}}"
-                                                                id="quick_view" ><i class="fa-solid fa-eye"></i></a></li>
+                                                                    data-id="{{$product->id}}"
+                                                                    data-name="{{$product->name}}"
+                                                                    data-price="{{$product->price}}"
+                                                                    data-qty="{{$product->qty}}"
+                                                                    data-short_desc="{{$product->short_desc}}"
+                                                                    data-image="{{$product->image}}"
+                                                                    id="quick_view" ><i class="fa-solid fa-eye"></i></a></li>
                                                                 
                                                                 <li>
-
-                                                                    <a href="signin.html"><i class="fas fa-heart"></i></a></li>
+                                                                @auth
+                                                                <a href="{{url('add_wishlist', $product->id)}}" class="add_wishlist"
+                                                                    data-id="{{$product->id}}"
+                                                                    data-tooltip="tooltip" data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a>
+                                                                    @else
+                                                                <a href="{{url('login')}}" data-tooltip="tooltip"
+                                                                     data-placement="top" title="Add to Wishlist"><i class="fas fa-heart"></i></a>
+                                                                    @endauth
+                                                                    
+                                                                </li>
                                                                 <li>
 
                                                                     <a href="signin.html"><i class="fas fa-envelope"></i></a></li>
