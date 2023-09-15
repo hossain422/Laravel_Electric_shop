@@ -18,3 +18,6 @@ Fully E-commerce Functionality by PHP Laravel, jQuery, Ajax
 15. Order Invoice download with PDF
 16. Product Rating & Review system
 17. Use Google Translate any language
+
+
+![Web capture_15-9-2023_2260_localhost](https://github.com/hossain422/Laravel_Electric_shop/assets/95046096/f9b8e983-f07a-483f-89dc-2f2048a8cc03)
