@@ -7,7 +7,7 @@
         <div class="app-content">
 
                     <!--====== Primary Slider ======-->
-                    <div class="s-skeleton s-skeleton--h-600 s-skeleton--bg-grey mt-5">
+                <div class="s-skeleton container s-skeleton--h-600 s-skeleton--bg-grey mt-5">
                     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-indicators">
                             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -16,21 +16,21 @@
                         </div>
                         <div height="900px" class="carousel-inner">
                             <div class="carousel-item active">
-                            <img height="600px" src="{{asset('images/banners/banner_1.png')}}" class="d-block w-100" alt="...">
+                            <img height="600px" src="{{asset('images/banners/banner_6.png')}}" class="d-block w-100" alt="...">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>First slide label</h5>
                                 <p>Some representative placeholder content for the first slide.</p>
                             </div>
                             </div>
                             <div class="carousel-item">
-                            <img height="600px" src="{{asset('images/banners/banner_2.jpg')}}" class="d-block w-100" alt="...">
+                            <img height="600px" src="{{asset('images/banners/banner_5.png')}}" class="d-block w-100" alt="...">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>Second slide label</h5>
                                 <p>Some representative placeholder content for the second slide.</p>
                             </div>
                             </div>
                             <div class="carousel-item">
-                            <img height="600px" src="{{asset('images/banners/banner_3.png')}}" class="d-block w-100" alt="...">
+                            <img height="600px" src="{{asset('images/banners/banner_4.jpg')}}" class="d-block w-100" alt="...">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>Third slide label</h5>
                                 <p>Some representative placeholder content for the third slide.</p>
@@ -434,7 +434,7 @@
 
                                                 <a class="aspect aspect--bg-grey aspect--1366-768 u-d-block" href="blog-detail.html">
 
-                                                    <img class="aspect__img" src="images/blog/post-2.jpg" alt=""></a>
+                                                    <img class="aspect__img" src="images/blog/blog_1.jpg" alt=""></a>
                                                 <!--====== End - Image Code ======-->
                                             </div>
                                             <div class="bp-mini__content">
@@ -493,7 +493,7 @@
 
                                                 <a class="aspect aspect--bg-grey aspect--1366-768 u-d-block" href="blog-detail.html">
 
-                                                    <img class="aspect__img" src="images/blog/post-12.jpg" alt=""></a>
+                                                    <img class="aspect__img" src="images/blog/blog_2.jpg" alt=""></a>
                                                 <!--====== End - Image Code ======-->
                                             </div>
                                             <div class="bp-mini__content">
@@ -552,7 +552,7 @@
 
                                                 <a class="aspect aspect--bg-grey aspect--1366-768 u-d-block" href="blog-detail.html">
 
-                                                    <img class="aspect__img" src="images/blog/post-5.jpg" alt=""></a>
+                                                    <img class="aspect__img" src="images/blog/blog_3.jpg" alt=""></a>
                                                 <!--====== End - Image Code ======-->
                                             </div>
                                             <div class="bp-mini__content">

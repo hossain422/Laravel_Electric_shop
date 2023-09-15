@@ -6,7 +6,6 @@
 <div class="container-xxl flex-grow-1 container-p-y">
               <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Products/</span> 
             <a data-bs-toggle="modal" data-bs-target="#add_product_modal" href="" class="btn btn-sm btn-primary">Add Product</a></h4>
-<marquee behavior="" direction="left">Bangladesh is a beautiful Country!!</marquee>
               <!-- Basic Layout -->
               <table id="example" class="display table" style="width:100%">
                 <thead>
@@ -27,13 +26,13 @@
                     @foreach($product as $product)
                     <tr>
                         <td>{{$i++}}</td>
-                        <td>{{$product->name}}</td>
+                        <td width="30%">{{$product->name}}</td>
                         <td>
                             <img width="80px" height="80px" src="{{asset('storage/uploads/'.$product->image)}}" alt="">
                         </td>
                         
-                        <td>{{$product->sub_category->sub_category_name}}</td>
-                        <td>{{$product->brand->brand_name}}</td>
+                        <td>{{optional($product->sub_category)->sub_category_name}}</td>
+                        <td>{{optional($product->brand)->brand_name}}</td>
                         <td>$ {{$product->price}}</td>
                         <td>{{$product->qty}}</td>
                         <td>{{$product->created_at->format('d_M_Y')}}</td>
@@ -52,11 +51,11 @@
                                 data-name="{{$product->name}}"
                                 data-image="{{$product->image}}"
                                 data-thambnail= "{{$product->thambnail}}"
-                                data-brand_name="{{$product->brand->brand_name}}"
+                                data-brand_name="{{optional($product->brand)->brand_name}}"
                                 data-brand_id="{{$product->brand_id}}"
                                 data-category_name="{{$product->category->category_name}}"
                                 data-category_id="{{$product->category_id}}"
-                                data-sub_category_name="{{$product->sub_category->sub_category_name}}"
+                                data-sub_category_name="{{optional($product->sub_category)->sub_category_name}}"
                                 data-sub_category_id="{{$product->sub_category_id}}"
                                 data-price="{{$product->price}}"
                                 data-qty="{{$product->qty}}"
